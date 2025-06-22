@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Analysis Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-adapter-moment/1.0.1/chartjs-adapter-moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-financial@0.1.0/dist/chartjs-chart-financial.min.js"></script>
+    <link rel="stylesheet" href="portfolio_analysis.css">
+</head>
+<body>
+    <div class="container">
+        <h1>📈 Indian Stock Portfolio Analysis</h1>
+        
+        <div class="multiselect-container" id="multiselectContainer">
+            <div class="selected-items" id="selectedItemsContainer">
+                <!-- Selected stock tags will go here -->
+            </div>
+            <input type="text" id="stockSearchInput" placeholder="Select stocks to analyze...">
+            <div class="dropdown-list" id="stockDropdownList">
+                <!-- Filtered stock list will go here -->
+            </div>
+        </div>
+
+        <div style="text-align:center; margin-bottom: 24px;">
+            <button class="btn" id="loadDataBtn" onclick="onLoadDataClick()">Analyze Portfolio</button>
+        </div>
+        
+        <div class="controls" id="controlsSection" style="display:none;">
+            <button class="btn active" id="btn-price" onclick="showAnalysis('price')">Price Movement</button>
+            <button class="btn" id="btn-returns" onclick="showAnalysis('returns')">Returns Analysis</button>
+            <button class="btn" id="btn-volatility" onclick="showAnalysis('volatility')">Volatility</button>
+            <button class="btn" id="btn-correlation" onclick="showAnalysis('correlation')">Correlation</button>
+            <button class="btn" id="btn-performance" onclick="showAnalysis('performance')">Performance</button>
+        </div>
+        
+        <div id="loadingDiv" class="loading-container" style="display:none;">
+            <div class="loader"></div>
+            <p>Fetching market data...</p>
+        </div>
+        
+        <div id="analysisContent" style="display: none;">
+            <div class="stock-checklist" id="stockChecklistAnalysis"></div>
+            <div class="stats-grid" id="statsGrid"></div>
+            <div class="chart-grid" id="chartGrid">
+                <!-- Individual performance scatter plot will go here -->
+            </div>
+            <div class="chart-grid" id="portfolioChartGrid">
+                <!-- Combined portfolio chart will go here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="portfolio_analysis.js"></script>
+</body>
+</html>
